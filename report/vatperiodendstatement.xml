@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+        <template id="report_vatperiodendstatement_document" inherit_id="account_vat_period_end_statement.report_vatperiodendstatement_document">
+          
+            <xpath expr="//div[@class='page']" position="before">
+                <t t-set="title">Vat End Period Statement</t>
+            </xpath>
+            
+            <xpath expr="//h3" position="replace">
+                
+                <t t-if="res_company.accounting_mode == 'quarterly'">
+                    <h3><span>Summary</span> <span t-esc="period.name"/> </h3>
+                </t>
+                <t t-if="res_company.accounting_mode != 'quarterly'">
+                    <h3><span>Summary</span> <span t-esc="period.name"/> </h3>
+                </t>
+                
+            </xpath>
+            
+        </template>
+    </data>
+</openerp>

@@ -26,10 +26,11 @@
     'author': 'Cogito srl',
     'description': 'enables quarterly accounting on Odoo l10n_it',
     'category': 'Reporting',
-    'depends': ['l10n_it_vat_registries'],
+    'depends': ['l10n_it_vat_registries', 'account_vat_period_end_statement'],
     'data': [
         'report/internal_layout.xml',
         'report/registro_iva.xml',
+        'report/vatperiodendstatement.xml',
         'view/company_view.xml',
     ],
     'installable': True,
