@@ -1,0 +1,38 @@
+<openerp>
+    <data>
+        <template id="report_registro_iva" inherit_id="l10n_it_vat_registries.report_registro_iva">
+          
+            <xpath expr="//t/t/t" position="replace">
+                <t t-set="title"  t-value="tax_registry_name"/>
+            </xpath>
+            
+            <xpath expr="//table/thead/tr[@class='first_th_row']" position="replace">
+                
+                <t t-set="prefix" t-value="tax_registry_name + ' '" />
+                <t t-set="suffix" t-value="''" />
+                <t t-set="quarterly_indicator" t-value="''" />
+                <t t-set="year_indicator" t-value="''" />
+                
+                <t t-if="res_company.accounting_mode == 'quarterly'">
+                    <t t-set="suffix" t-value="' trimestre '" />
+                    
+                    <t t-set="quarterly_indicator" t-value="(int((end_date()[5:7]).replace('0','')) / 3) * 'I'" />
+                    
+                    <t t-set="year_indicator" t-value="start_date()[:4]" />
+                </t>
+                <t t-if="res_company.accounting_mode != 'quarterly'">
+                    <t t-set="suffix" t-value="'Periodo di stampa dal ' + formatLang(start_date(), date=True) + ' al ' + formatLang(end_date(), date=True)" />
+                </t>
+                
+                <!-- same as before -->
+                <t t-if="registry_type == 'corrispettivi'">
+                    <td colspan="4" style="padding:10;" t-esc="prefix + quarterly_indicator + suffix + year_indicator"/>
+                </t>
+                <t t-if="registry_type != 'corrispettivi'">
+                    <td colspan="9" style="padding:10;" t-esc="prefix + quarterly_indicator + suffix + year_indicator"/>
+                </t>
+            </xpath>
+    
+        </template>
+    </data>
+</openerp>

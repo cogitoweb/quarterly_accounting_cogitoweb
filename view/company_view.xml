@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!--  Company inherited form -->
+    <record id="view_res_company_quarterly_accounting" model="ir.ui.view">
+        <field name="name">view.company.email.ticket</field>
+        <field name="model">res.company</field>
+        <field name="priority">999</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="of_account_end_vat_statement_interest_account_id" position="after">
+                <field name="accounting_mode" />
+            </field>
+        </field>
+   </record>
+
+</data>
+</openerp>
