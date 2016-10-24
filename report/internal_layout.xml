@@ -1,0 +1,13 @@
+<openerp>
+    <data>
+        <template id="account_internal_layout" inherit_id="l10n_it_account.internal_layout">
+          
+            <xpath expr="//div[@class='col-xs-4 col-xs-offset-4 text-right doc-info']" position="replace">
+                <div class="col-xs-8 text-right doc-info">
+                      <h3 class="doc-title" t-esc="title"/>
+                </div>
+            </xpath>            
+    
+        </template>
+    </data>
+</openerp>

@@ -28,6 +28,7 @@
     'category': 'Reporting',
     'depends': ['l10n_it_vat_registries'],
     'data': [
+        'report/internal_layout.xml',
         'report/registro_iva.xml',
         'view/company_view.xml',
     ],
