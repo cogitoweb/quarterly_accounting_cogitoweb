@@ -8,12 +8,22 @@
             
             <xpath expr="//h3" position="replace">
                 
+                <t t-set="suffix" t-value="''" />
+                <t t-set="quarterly_indicator" t-value="''" />
+                <t t-set="year_indicator" t-value="''" />
+                
                 <t t-if="res_company.accounting_mode == 'quarterly'">
-                    <h3><span>Summary</span> <span t-esc="period.name"/> </h3>
+                    <t t-set="suffix" t-value="' trimestre '" />
+                    
+                    <t t-set="quarterly_indicator" t-value="(int((period.date_stop[5:7]).replace('0','')) / 3) * 'I'" />
+                    
+                    <t t-set="year_indicator" t-value="period.date_stop[:4]" />
                 </t>
                 <t t-if="res_company.accounting_mode != 'quarterly'">
-                    <h3><span>Summary</span> <span t-esc="period.name"/> </h3>
+                    <t t-set="suffix" t-value="period.name" />
                 </t>
+                
+                <h3><span>Summary</span> <span t-esc="quarterly_indicator + suffix + year_indicator"/> </h3>
                 
             </xpath>
             

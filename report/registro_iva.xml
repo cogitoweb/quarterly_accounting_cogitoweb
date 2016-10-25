@@ -18,7 +18,7 @@
                     
                     <t t-set="quarterly_indicator" t-value="(int((end_date()[5:7]).replace('0','')) / 3) * 'I'" />
                     
-                    <t t-set="year_indicator" t-value="start_date()[:4]" />
+                    <t t-set="year_indicator" t-value="end_date()[:4]" />
                 </t>
                 <t t-if="res_company.accounting_mode != 'quarterly'">
                     <t t-set="suffix" t-value="'Periodo di stampa dal ' + formatLang(start_date(), date=True) + ' al ' + formatLang(end_date(), date=True)" />
